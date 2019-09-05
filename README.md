@@ -8,12 +8,22 @@ Lua version: 5.3.5
 
 CMakeLists.txt
 ```cmake
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.11)
 project(test_project)
 
 set(CMAKE_CXX_STANDARD 17)
 
 include(FetchContent)
+if(${CMAKE_VERSION} VERSION_LESS 3.14)
+    macro(FetchContent_MakeAvailable NAME)
+        FetchContent_GetProperties(${NAME})
+        if(NOT ${NAME}_POPULATED)
+            FetchContent_Populate(${NAME})
+            add_subdirectory(${${NAME}_SOURCE_DIR} ${${NAME}_BINARY_DIR})
+        endif()
+    endmacro()
+endif()
+
 FetchContent_Declare(lua GIT_REPOSITORY https://github.com/andyroiiid/lua.git)
 FetchContent_MakeAvailable(lua)
 
