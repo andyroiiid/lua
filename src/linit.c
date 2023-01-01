@@ -1,7 +1,7 @@
 /*
-** $Id: linit.c,v 1.39.1.1 2017/04/19 17:20:42 roberto Exp $
-** Initialization of libraries for src.c and other clients
-** See Copyright Notice in src.h
+** $Id: linit.c $
+** Initialization of libraries for lua.c and other clients
+** See Copyright Notice in lua.h
 */
 
 
@@ -29,18 +29,18 @@
 
 #include <stddef.h>
 
-#include "../include/lua.h"
+#include "lua.h"
 
-#include "../include/lualib.h"
-#include "../include/lauxlib.h"
+#include "lualib.h"
+#include "lauxlib.h"
 
 
 /*
-** these libs are loaded by src.c and are readily available to any Lua
+** these libs are loaded by lua.c and are readily available to any Lua
 ** program
 */
 static const luaL_Reg loadedlibs[] = {
-  {"_G", luaopen_base},
+  {LUA_GNAME, luaopen_base},
   {LUA_LOADLIBNAME, luaopen_package},
   {LUA_COLIBNAME, luaopen_coroutine},
   {LUA_TABLIBNAME, luaopen_table},
@@ -50,9 +50,6 @@ static const luaL_Reg loadedlibs[] = {
   {LUA_MATHLIBNAME, luaopen_math},
   {LUA_UTF8LIBNAME, luaopen_utf8},
   {LUA_DBLIBNAME, luaopen_debug},
-#if defined(LUA_COMPAT_BITLIB)
-  {LUA_BITLIBNAME, luaopen_bit32},
-#endif
   {NULL, NULL}
 };
 

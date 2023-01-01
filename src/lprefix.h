@@ -1,7 +1,7 @@
 /*
-** $Id: lprefix.h,v 1.2.1.1 2017/04/19 17:20:42 roberto Exp $
+** $Id: lprefix.h $
 ** Definitions for Lua code that must come before any other header file
-** See Copyright Notice in src.h
+** See Copyright Notice in lua.h
 */
 
 #ifndef lprefix_h
@@ -33,7 +33,7 @@
 /*
 ** Windows stuff
 */
-#if defined(_WIN32) 	/* { */
+#if defined(_WIN32)	/* { */
 
 #if !defined(_CRT_SECURE_NO_WARNINGS)
 #define _CRT_SECURE_NO_WARNINGS  /* avoid warnings about ISO C functions */
