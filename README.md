@@ -1,5 +1,5 @@
 # Lua
 
-A simple wrapper for using lua within a cmake project.
+A simple wrapper for using Lua in a CMake project.
 
-Lua version: 5.4.4
+Lua version: 5.4.6
